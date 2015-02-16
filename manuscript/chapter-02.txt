@@ -3,3 +3,10 @@
 It was a **bold** and *italic* night!
 
 Suddenly, a shot rang out!
+
+```js
+// Here is some JavaScript code
+var example = function() {
+  console.log("Hello World");
+};
+```
