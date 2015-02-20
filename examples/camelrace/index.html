@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <title>Camel Race</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/codepo8/CSS3-Rainbow-Dividers/master/rainbows.css">
+    <style>
+      .active {
+        background: center center no-repeat;
+      }
+      #player1 .active {
+        background-image: url(images/llama2.gif);
+      }
+      #player2 .active {
+        background-image: url(images/llama3.gif);
+      }
+      td {
+        border: 1px solid lightgrey;
+        width: 50px;
+        height: 50px;
+      }
+
+      #result {
+        display: none;
+        width: 560px;
+        height: 100px;
+        color: white;
+        line-height: 100px;
+        font-size: 40px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr id="player1">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr id="player2">
+        <td class="active"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+
+    <div id="result" class="catchadream"></div>
+
+    <script>
+      var pos1 = 0;
+      var pos2 = 0;
+      var maxPos = 9;
+      var gameEnded = false;
+      var rows1 = document.querySelector("#player1").children;
+      var rows2 = document.querySelector("#player2").children;
+      var result = document.querySelector("#result");
+
+      document.addEventListener("keypress", keypressListener);
+
+      function keypressListener(event) {
+        switch(event.keyCode) {
+          case 97:
+            advance(rows1, pos1, "Player 1");
+            pos1 += 1;
+            break;
+          case 108:
+            advance(rows2, pos2, "Player 2");
+            pos2 += 1;
+            break;
+        }
+      }
+
+      function advance(rows, pos, player) {
+        if (pos >= maxPos) return;
+        if (gameEnded) return;
+
+        rows[pos].classList.remove("active");
+        rows[pos+1].classList.add("active");
+
+        if (pos+1 === maxPos) {
+          gameEnded = true;
+          winner(player);
+        }
+      }
+
+      function winner(player) {
+        var message = "The winner is " + player + "!!";
+        result.innerHTML = message;
+        result.style.display = "block";
+      }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Javascript Patterns</title>
+    <link rel="stylesheet" href="components/slidus/slidus-static.css">
+    <link rel="stylesheet" href="components/slidus.theme/css/widget.theme.css">
+    <link rel="stylesheet" href="components/lungo.icon/lungo.icon.css">
+    <link rel="stylesheet" href="components/lungo.icon/lungo.icon.brand.css">
+    <link href="assets/javascripts/rainbow/themes/blackboard.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body class="kinout">
+
+    <!-- ============================== TAPQUO ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1 class="font fine">Javascript Patterns</h1>
+        </article>
+    </section>
+
+    <!-- ============================== INDEX ============================== -->
+    <section>
+        <article>
+            <header>
+                <h1><mark>¿What are we going to see?</h1>
+            </header>
+            <div>
+                <br/>
+                <ol>
+                    <li data-step="right">What is a Pattern?</li>
+                    <li data-step="left">Object Creation</li>
+                    <li data-step="right">Basic Constructor</li>
+                    <li data-step="left">Singleton Pattern</li>
+                    <li data-step="right">Module Pattern</li>
+                    <li data-step="left">Revealing Module Pattern</li>
+                    <li data-step="right">Prototype Pattern</li>
+                    <li data-step="right">Facade Pattern</li>
+                    <li data-step="left">Factory Pattern</li>
+                    <li data-step="right">Decorator Pattern</li>
+                    <li data-step="left">Chaining Pattern</li>
+                    <li data-step="left">References</li>
+                </ol>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== 0.CROCKFORD SAYS ============================== -->
+    <section>
+        <article data-slide="blockquote" data-image="assets/images/douglas.jpeg">
+            <div>
+                <blockquote>JavaScript doesn't suck! You're just doing it wrong.</blockquote>
+                <cite class="text color white">Doug Crockford</cite>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== 1.What is a Pattern ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>1</h1>
+            <h1><mark>What is a Pattern</mark></h1>
+        </article>
+
+         <article>
+            <header>
+                <h2>Pattern is</h2>
+                <h3><mark>... a pattern is...</mark></h3>
+            </header>
+            <br/>
+            <div>
+               ...a reusable solution that can be applied to commonly occurring problems in software design - in our particular case, in writing JavaScript applications. Another way of looking at patterns are as templates for how you solve problems - ones which can be used in quite a few different situations.
+To consider how useful a pattern may be, let us consider that if you were to write a script where you said ‘for each item, sound an alert’, if sounding an alert was complex in nature, it would always result in more maintainable code doing the above over saying ‘do this for item 1’, ‘do this for item 2’, ‘do the same again for item 3’, i.e. If the code performing the bulk of the work exists in fewer places it becomes significantly easier to maintain.
+            </div>
+        </article>
+
+         <article data-slide="title">
+            <h1>In short</h1>
+            <h1 data-step="left">A pattern has to...</h1>
+            <h1 data-step="right"><mark>...offer solutions</mark></h1>
+        </article>
+
+        <article data-slide="title">
+            <h1>has to...</h1>
+            <h1><mark>...be easy to re-use</mark></h1>
+        </article>
+
+        <article data-slide="title">
+            <h1>has to...</h1>
+            <h1><mark>...be self-expressive</mark></h1>
+        </article>
+
+        <article>
+            <br/>
+            <br/>
+            <div><h4>Reusing patterns assists in preventing minor issues that can cause major problems in the application development process.</h4> What this means is when code is built on proven patterns, we can afford to spend less time worrying about the structure of our code and more time focusing on the quality of our overall solution. This is because patterns can encourage us to code in a more structured and organized fashion avoiding the need to refactor it for cleanliness purposes in the future.</div>
+        </article>
+
+        <article>
+            <br/>
+            <br/>
+            <div><h4>Patterns can provide generalized solutions which are documented in a fashion that doesn't require them to be tied to a specific problem.</h4> This generalized approach means that regardless of the application (and in many cases the programming language) we are working with, design patterns can be applied to improve the structure of our code.</div>
+        </article>
+
+        <article>
+            <br/>
+            <br/>
+            <div><h4>Certain patterns can actually decrease the overall file-size footprint of our code by avoiding repetition.</h4> By encouraging developers to look more closely at their solutions for areas where instant reductions in repetition can be made, e.g. reducing the number of functions performing similar processes in favor of a single generalized function, the overall size of our codebase can be decreased. This is also known as making code more DRY.</div>
+        </article>
+
+        <article>
+            <br/>
+            <br/>
+            <div><h4>Patterns add to a developer's vocabulary, which makes communication faster.</h4></div>
+        </article>
+
+        <article>
+            <br/>
+            <br/>
+            <div><h4>Patterns that are frequently used can be improved over time by harnessing the collective experiences other developers using those patterns contribute back to the design pattern community.</h4> In some cases this leads to the creation of entirely new design patterns whilst in others it can lead to the provision of improved guidelines on how specific patterns can be best used. This can ensure that pattern-based solutions continue to become more robust than ad-hoc solutions may be.</div>
+        </article>
+
+        <article>
+            <header>
+                <h1>Types of Patterns</h1>
+            </header>
+            <br/>
+            <div>
+                <div>
+                    <div data-step="left">
+                        <h2>Creational Design Patterns</h2>
+                        <p>
+                            Factory<mark>, Abstract Factory, Builder,</mark> Prototype, Singleton</p>
+                        <br/>
+                    </div>
+
+                    <div data-step="right">
+                        <h2>Structural Design Patterns</h2>
+                        <p>
+                            <mark>Adapter, Bridge, Composite, Decorator, </mark>Facade<mark>, Flyweight, Proxy</mark>
+                        </p>
+                        <br/>
+                    </div>
+
+
+                    <div data-step="left">
+                        <h2>Behavioral Design Patterns</h2>
+                        <p>
+                            Interpreter, Template Method, Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Visitor,
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== OBJECT CREATION ============================== -->
+    <section>
+        <article data-slide="title" data-color="#FFC801">
+            <h1>Object creation</h1>
+            <h3><mark>...the most basic one</mark></h3>
+
+        </article>
+
+        <article data-color="#FFC801">
+            <header>
+                <h2>Object creation</h2>
+                <h3><mark>...the most basic one</mark></h3>
+            </header>
+
+            <div>
+                <pre><code data-language="javascript">
+
+var newObject = {};
+
+// or
+var newObject = Object.create( Object.prototype );
+
+// or
+var newObject = new Object();
+
+                </code></pre>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== Basic Constructor ============================== -->
+    <section>
+        <article data-slide="title" data-color="red">
+            <h1>Basic Constructor</h1>
+            <h3><mark>...the most known</mark></h3>
+        </article>
+
+        <article data-color="red">
+            <header>
+                <h2>Basic Constructor</h2>
+                <h3><mark>...the most known</mark></h3>
+            </header>
+<div>
+    <pre><code data-language="javascript">
+function Car(model, year, miles){
+   this.model = model;
+   this.year    = year;
+   this.miles  = miles;
+   this.whatCar = function(){
+     console.log(this.model);
+  };
+}
+
+var civic = new Car("Honda Civic", 2009, 20000);
+var mondeo = new Car("Ford Mondeo", 2010, 5000);
+    </code></pre>
+</div>
+            <div>
+                <h4>Capitalize the constructor to be able to distinguish it from normal functions.</h4>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== SINGLETON PATTERN ============================== -->
+    <section>
+        <article data-slide="title" data-color="green">
+            <h1>The Singleton Pattern</h1>
+            <h3><mark>...create if it doesn't exist</mark></h3>
+        </article>
+
+        <article data-color="green">
+            <header>
+                <h2>The Singleton Pattern</h2>
+                <h3><mark>...create if it doesn't exist</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var SingletonTester = (function(){
+    function Singleton(args) {
+        var args = args || {};
+        //set the name parameter
+        this.name = 'SingletonTester';
+        this.pointX = args.pointX || 6;
+    }
+
+    var instance;  //this is our instance holder
+    //this is an emulation of static variables and methods
+    var _static = {
+        name: 'SingletonTester',
+        getInstance: function (args) {
+            if (instance === undefined) {
+                instance = new Singleton(args);
+            }
+            return instance;
+        }
+    };
+
+    return _static;
+})();
+
+var singletonTest = SingletonTester.getInstance({pointX: 5});
+console.log(singletonTest.pointX); // outputs 5</code></pre>
+        </article>
+    </section>
+
+
+    <!-- ============================== The Module Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="magenta">
+            <h1>The Module Pattern</h1>
+            <h3><mark>...one of the most often used</mark></h3>
+        </article>
+
+        <article data-color="magenta">
+            <header>
+                <h2>The Module Pattern</h2>
+                <h3><mark>...one of the most often used</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var someModule = (function(){
+    //private attributes
+    var privateVar = 5;
+    //private methods
+    var privateMethod = function(){
+        return 'Private Test';
+    };
+
+    return {
+        //public attributes
+        publicVar    : 10,
+        //public methods
+        publicMethod : function(){
+            return ' Followed By Public Test ';
+        },
+        //let's access the private members
+        getData : function(){
+            return privateMethod() + this.publicMethod() + privateVar;
+        }
+    }
+})(); //anonymous function to execute and return
+
+someModule.getData();</code></pre>
+        </article>
+
+        <article data-slide="title" data-color="magenta">
+            <h1>Let's improve it</h1>
+            <h3><mark>...clean-code my friend</mark></h3>
+        </article>
+
+
+        <article data-color="magenta">
+            <header>
+                <h2>The Module Pattern</h2>
+                <h3><mark>...one of the most often used</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var someModule = (function(){
+    var private_var = 5;
+    var PUBLIC_CONSTANT = 10;
+
+    function publicMethod() {
+        return ' Followed By Public Test ';
+    }
+
+    function publicMethod2() {
+        return privateMethod() + this.publicMethod() + privateVar;
+    }
+
+    // Private methods in last position
+    function _privateMethod() {
+        return 'Private Test';
+    };
+
+    return {
+        publicVar    : PUBLIC_CONSTANT,
+        publicMethod : publicMethod,
+        getData      : publicMethod2
+    }
+})();
+
+someModule.getData();</code></pre>
+        </article>
+
+        <article data-slide="title" data-color="magenta">
+            <h1><mark>This is called…</mark></h1>
+        </article>
+
+       <article data-slide="title" data-color="magenta">
+            <h1>Revealing Module Pattern</h1>
+            <h3><mark>...one of the most often used</mark></h3>
+        </article>
+    </section>
+
+    <!-- ============================== The Prototype Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="grey">
+            <h1>The Prototype Pattern</h1>
+            <h3><mark>...based in prototypal inheritance</mark></h3>
+        </article>
+
+        <article data-color="grey">
+            <header>
+                <h2>The Prototype Pattern</h2>
+                <h3><mark>...based in prototypal inheritance</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">// No need for capitalization as it's not a constructor
+var someCar = {
+  drive: function() {};
+  name: 'Mazda 3'
+};
+// Use Object.create to generate a new car
+var anotherCar = Object.create(someCar);
+// Now we can see that one is a prototype of the other
+console.log( yourCar.name );
+// And modify it
+anotherCar.name = 'Toyota Camry';</code></pre>
+        </code></pre>
+        </article>
+    </section>
+
+    <!-- ============================== The Facade Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="#FFC801">
+            <h1>The Facade Pattern</h1>
+            <h3><mark>...abstract yourself from everything</mark></h3>
+        </article>
+
+        <article data-color="#FFC801">
+            <header>
+                <h2>The Facade Pattern</h2>
+                <h3><mark>...abstract yourself from everything</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">var addMyEvent = function(element, event, callback) {
+
+    if(element.addEventListener) {
+        element.addEventListener(event, callback, false);
+    } else if (element.attachEvent) {
+        element.attachEvent('on'+event, callback);
+    } else {
+        element['on' + event] = callback;
+    }
+
+};
+</code></pre>
+        </article>
+    </section>
+
+    <!-- ============================== The Factory Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="orange">
+            <h1>The Factory Pattern</h1>
+            <h3><mark>...start fabricating objects</mark></h3>
+        </article>
+
+        <article data-color="orange">
+            <header>
+                <h2>The Factory Pattern</h2>
+                <h3><mark>...llama a la fábrica</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">// A constructor for defining new cars
+function Car( options ) {
+  // some defaults
+  this.doors = options.doors || 4;
+  this.color = options.color || "silver";
+}
+
+// A constructor for defining new trucks
+function Truck( options){
+  this.state = options.state || "used";
+  this.color = options.color || "blue";
+}
+
+// Define a skeleton vehicle factory
+function VehicleFactory() {}
+// Our default vehicleClass is Car
+VehicleFactory.prototype.vehicleClass = Car;
+
+// Our Factory method for creating new Vehicle instances
+VehicleFactory.prototype.createVehicle = function ( options ) {
+  switch(options.vehicleType){
+    case "car":
+      this.vehicleClass = Car;
+      break;
+    case "truck":
+      this.vehicleClass = Truck;
+      break;
+    //defaults to VehicleFactory.prototype.vehicleClass (Car)
+  }
+
+  return new this.vehicleClass( options );
+};
+
+// Create an instance of our factory that makes cars
+var carFactory = new VehicleFactory();
+var car = carFactory.createVehicle( {vehicleType: "car", color: "yellow"} );
+
+// Outputs: true
+console.log( car instanceof Car );
+// Outputs: Car object of color "yellow", doors: 6 in a "brand new" state
+console.log( car );
+</code></pre>
+
+        </article>
+    </section>
+
+    <!-- ============================== The Decorator Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="purple">
+            <h1>The Decorator Pattern</h1>
+            <h3><mark>...an alternative to subclases</mark></h3>
+        </article>
+
+        <article data-color="purple">
+            <header>
+                <h2>The Decorator Pattern</h2>
+                <h3><mark>...an alternative to subclases</mark></h3>
+            </header>
+            <br/>
+            <pre><code data-language="javascript">// The constructor to decorate
+function MacBook() {
+  this.cost = function () { return 997; };
+  this.screenSize = function () { return 11.6; };
+}
+
+// Decorator 1
+function memory( macbook ) {
+  var v = macbook.cost();
+  macbook.cost = function() {
+    return v + 75;
+  };
+}
+
+// Decorator 2
+function engraving( macbook ){
+  var v = macbook.cost();
+  macbook.cost = function(){
+    return  v + 200;
+  };
+}
+
+// Decorator 3
+function insurance( macbook ){
+  var v = macbook.cost();
+  macbook.cost = function(){
+     return  v + 250;
+  };
+}
+
+var mb = new MacBook();
+memory( mb );
+engraving( mb );
+insurance( mb );
+
+// Outputs: 1522
+console.log( mb.cost() );
+
+// Outputs: 11.6
+console.log( mb.screenSize() );</code></pre>
+
+        </article>
+    </section>
+
+    <!-- ============================== The Chaining Pattern ============================== -->
+    <section>
+        <article data-slide="title" data-color="darkgrey">
+            <h1>The Chaining Pattern</h1>
+            <h3><mark>...chaining functionalities</mark></h3>
+        </article>
+
+        <article data-color="darkgrey">
+            <header>
+                <h2>The Chaining Pattern</h2>
+                <h3><mark>...chaining functionalities</mark></h3>
+            </header>
+            <pre><code data-language="javascript">var Chainable = function () {
+    this.nNumber = 0;
+};
+
+Chainable.prototype.add = function (nNumber) {
+    this.nNumber += nNumber;
+    return this;
+};
+
+Chainable.prototype.multiply = function (nNumber) {
+    this.nNumber *= nNumber;
+    return this;
+};
+
+Chainable.prototype.toString = function()
+{
+    return this.nNumber.toString();
+};
+
+var a = Chainable().add(5).multiply(2);
+console.error(a.toString());
+</code></pre>
+            <br/>
+        </article>
+
+        <article data-slide="title" data-color="darkgrey">
+
+            <h1 >¿Know of a JS Library that uses this?</h1>
+
+            <h1 data-step="boom"><mark>jQuery</mark></h1>
+        </article>
+    </section>
+
+    <!-- ============================== REFERENCES ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>References</h1>
+            <h5><mark>good to read</mark></h5>
+        </article>
+
+
+        <article>
+            <header>
+              <h1>References</h1>
+              <h5><mark>good to read</mark></h5>
+            </header>
+            <br/>
+            <div>
+                <span class="column big">
+                    <img src="assets/images/stoyan-stefanov-book.jpg" class="size_400 bordered"/>
+                    <br/>
+                    <a href="http://www.amazon.es/JavaScript-Patterns-Stoyan-Stefanov/dp/0596806752" target="_blank">Buy now!</a>
+                </span>
+
+                <span class="column big right">
+                    <img src="assets/images/ross-dustin-book.gif" class="size_400 bordered"/>
+                    <br/>
+                    <a href="http://www.amazon.es/JavaScript-Design-Patterns-Recipes-ebook/dp/B001AT1YUA/ref=sr_1_3?s=digital-text&ie=UTF8&qid=1354275884&sr=1-3" target="_blank">Buy now!</a>
+                </span>
+            </div>
+        </article>
+    </section>
+
+    <!-- ============================== FINISH ============================== -->
+    <section>
+        <article data-slide="title">
+            <h1>thanks!</h1>
+        </article>
+    </section>
+
+    <script src="components/quojs/quo.js"></script>
+    <script src="components/slidus/slidus-static.js"></script>
+    <script src="assets/javascripts/rainbow/rainbow.min.js"></script>
+    <script src="assets/javascripts/rainbow/language/generic.js"></script>
+    <script src="assets/javascripts/rainbow/language/coffeescript.js"></script>
+    <script>
+        $$(document).ready(function() {
+            KINOUT.init();
+        });
+    </script>
+
+</body>
+</html>
