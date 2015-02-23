@@ -1,6 +1,6 @@
-# Advanced Javascript Course
+# Advanced Frontend Development
 
-This is a place to put examples, slides and info about the Ironhack Advanced Javascript course.
+This is a place to put examples, slides and info used for [Ironhack](http://ironhack.com)'s Advanced Frontend Development course.
 
 ## Slides:
 
